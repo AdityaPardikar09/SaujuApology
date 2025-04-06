@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Apology Video for Sauju</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffccda;
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4em;
+      text-align: center;
+      margin-top: 50px;
+      color: #fff;
+      text-shadow: 3px 3px 10px #ff69b4;
+      z-index: 2;
+      position: relative;
+    }
+
+    .video-box {
+      max-width: 800px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      max-width: 720px;
+      height: 405px;
+      background-color: #ffe4ec;
+      border: 3px dashed #ff69b4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      color: #c2185b;
+      margin: 0 auto;
+    }
+
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #ff69b4;
+      transform: rotate(45deg);
+      z-index: 1;
+      opacity: 0.7;
+      box-shadow: 0 0 10px #ff69b4;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #ff69b4;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -15px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -15px;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Here's the Apology Video 🥺🥺</h1>
+
+  <div class="video-box">
+    <div class="video-placeholder">
+      Video will go here 💖 (Paste the link later)
+    </div>
+  </div>
+
+  <script>
+    const hearts = [];
+    for (let i = 0; i < 130; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      document.body.appendChild(heart);
+
+      heart.style.top = Math.random() * window.innerHeight + 'px';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+
+      const dx = (Math.random() * 0.08 + 0.015) * (Math.random() < 0.5 ? -1 : 1);
+      const dy = (Math.random() * 0.08 + 0.015) * (Math.random() < 0.5 ? -1 : 1);
+
+      hearts.push({ el: heart, x: parseFloat(heart.style.left), y: parseFloat(heart.style.top), dx, dy });
+    }
+
+    function animateHearts() {
+      for (let heart of hearts) {
+        heart.x += heart.dx;
+        heart.y += heart.dy;
+
+        if (heart.x < 0 || heart.x > window.innerWidth - 30) heart.dx *= -1;
+        if (heart.y < 0 || heart.y > window.innerHeight - 30) heart.dy *= -1;
+
+        heart.el.style.left = heart.x + 'px';
+        heart.el.style.top = heart.y + 'px';
+      }
+      requestAnimationFrame(animateHearts);
+    }
+
+    animateHearts();
+  </script>
+</body>
+</html>

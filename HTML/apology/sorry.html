@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>I Love You Sauju</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffccda;
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4em;
+      text-align: center;
+      margin-top: 50px;
+      color: #fff;
+      text-shadow: 3px 3px 10px #ff69b4;
+      z-index: 2;
+      position: relative;
+    }
+
+    .message-box {
+      max-width: 700px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+      font-size: 1.2em;
+      color: #444;
+      line-height: 1.8;
+      position: relative;
+      z-index: 2;
+    }
+
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #ff69b4;
+      transform: rotate(45deg);
+      z-index: 1;
+      opacity: 0.7;
+      box-shadow: 0 0 10px #ff69b4;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #ff69b4;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -15px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -15px;
+      top: 0;
+    }
+
+    .question-card {
+      max-width: 800px;
+      margin: 100px auto;
+      background: #ffe0ed;
+      padding: 40px 30px 200px;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #c2185b;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 5;
+      flex-wrap: wrap;
+    }
+
+    .cute-btn {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 1.5em;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cute-btn:hover {
+      background-color: #ff85c1;
+    }
+
+    #yesWrapper {
+      position: relative;
+    }
+
+    #yesMsg {
+      position: absolute;
+      background: #fff;
+      color: #ff4081;
+      border-radius: 20px;
+      padding: 5px 15px;
+      font-size: 0.9em;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: none;
+      animation: pop 0.3s ease-out;
+      z-index: 10;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>I Love You Sauju</h1>
+
+  <div class="message-box">
+    I am so sorry Sauju for the past 6 days. I know I’ve hurt you a lot, yet you still stayed strong and cared for me—even on your worst days.  
+    <br><br>
+    I hurt my baby without realizing how deeply. But even then, your love never changed.  
+    <br><br>
+    I’m truly blessed to have you as my best friend, my girlfriend, my home, my peace, my comfort, and my everything.  
+    <br><br>
+    I’m really sorry for all the pain.  
+    <br><br>
+    I love you the most in this entire world.  
+    <br><br>
+    No one can love you like I do, Sauju.  
+    <br><br>
+    I LOVE YOU SOOO MUCHHH SAUJUUUU.  
+    <br><br>
+    Please forgive me and let’s heal together. 💖
+  </div>
+
+  <div class="question-card" id="questionCard">
+    Will you forgive me? 🥺🥺
+    <div class="btn-container" id="btnContainer">
+      <div id="yesWrapper">
+        <a href="surprise.html"><button id="yesBtn" class="cute-btn">Yes</button></a>
+        <div id="yesMsg">Try clicking no 😘</div>
+      </div>
+      <button id="noBtn" class="cute-btn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const yesMsg = document.getElementById("yesMsg");
+    const questionCard = document.getElementById("questionCard");
+    let noClickCount = 0;
+    let yesClickedOnce = false;
+    let yesClickedEver = false;
+
+    yesBtn.addEventListener("click", () => {
+      if (!yesClickedOnce && noClickCount === 0) {
+        yesMsg.style.display = "block";
+        setTimeout(() => {
+          yesMsg.style.display = "none";
+        }, 5000);
+        yesClickedOnce = true;
+      }
+      yesClickedEver = true;
+    });
+
+    noBtn.addEventListener("click", () => {
+      noClickCount++;
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      let randX = Math.floor(Math.random() * maxX);
+      let randY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = `${randX}px`;
+      noBtn.style.top = `${randY}px`;
+      noBtn.style.display = "block";
+
+      const currentScale = parseFloat(yesBtn.style.transform?.match(/scale\(([^)]+)\)/)?.[1] || "1");
+      const newScale = currentScale + 0.1;
+      yesBtn.style.transform = `scale(${newScale})`;
+
+      const container = document.getElementById("btnContainer");
+      if (yesBtn.getBoundingClientRect().bottom > container.getBoundingClientRect().bottom) {
+        container.style.marginTop = `${newScale * 20}px`;
+      }
+    });
+
+    const hearts = [];
+    for (let i = 0; i < 130; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      document.body.appendChild(heart);
+
+      heart.style.top = Math.random() * window.innerHeight + 'px';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+
+      const dx = (Math.random() * 0.08 + 0.015) * (Math.random() < 0.5 ? -1 : 1);
+      const dy = (Math.random() * 0.08 + 0.015) * (Math.random() < 0.5 ? -1 : 1);
+
+      hearts.push({ el: heart, x: parseFloat(heart.style.left), y: parseFloat(heart.style.top), dx, dy });
+    }
+
+    function animateHearts() {
+      for (let heart of hearts) {
+        heart.x += heart.dx;
+        heart.y += heart.dy;
+
+        if (heart.x < 0 || heart.x > window.innerWidth - 30) heart.dx *= -1;
+        if (heart.y < 0 || heart.y > window.innerHeight - 30) heart.dy *= -1;
+
+        heart.el.style.left = heart.x + 'px';
+        heart.el.style.top = heart.y + 'px';
+      }
+      requestAnimationFrame(animateHearts);
+    }
+
+    animateHearts();
+  </script>
+</body>
+</html>
